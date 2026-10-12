@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d6efd" />
+  <meta name="description" content="Open-Meteo API ile hava durumu PWA" />
+  <title>Hava Durumu PWA</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="icons/icon-192.png" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>🌤️ Hava Durumu</h1>
+    <button id="themeBtn" class="theme-btn" aria-label="Tema değiştir">🌙</button>
+  </header>
+
+  <div id="offlineBanner" class="offline-banner hidden">
+    ⚠️ İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edin.
+  </div>
+
+  <main>
+    <section class="search-section">
+      <form id="searchForm">
+        <input
+          id="cityInput"
+          type="text"
+          placeholder="Şehir adı girin (örn: İstanbul)"
+          autocomplete="off"
+          required
+        />
+        <button type="submit">Ara</button>
+      </form>
+      <button id="locationBtn" class="loc-btn">📍 Konumumu Kullan</button>
+      <p id="errorMsg" class="error-msg hidden"></p>
+    </section>
+
+    <section id="currentWeather" class="current-card hidden">
+      <h2 id="cityName">—</h2>
+      <div class="current-main">
+        <div class="temp-big" id="currentTemp">--°C</div>
+        <div class="weather-icon" id="currentIcon">🌡️</div>
+      </div>
+      <p id="weatherDesc" class="weather-desc">—</p>
+      <div class="details-grid">
+        <div><span>💧 Nem</span><strong id="humidity">--%</strong></div>
+        <div><span>🌬️ Rüzgâr</span><strong id="wind">-- km/s</strong></div>
+      </div>
+      <p class="updated" id="lastUpdated">Son güncelleme: —</p>
+    </section>
+
+    <section id="forecast" class="forecast-section hidden">
+      <h3>5 Günlük Tahmin</h3>
+      <div id="forecastList" class="forecast-list"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
